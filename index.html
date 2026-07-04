@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bryan &amp; Stefany — Invitación</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ SOBRE / VIDEO DE APERTURA ============ -->
+  <div class="video-screen" id="video-screen">
+    <video class="video-el" id="video-el" playsinline muted></video>
+    <div class="video-overlay" id="video-overlay">
+      <div class="video-overlay__content">
+        <p class="video-overlay__pre">Tienen el honor de invitarles</p>
+        <div class="video-overlay__monogram" id="sello-mono"><span id="sello-iniciales"></span></div>
+        <p class="video-overlay__label" id="overlay-nombres"></p>
+        <p class="video-overlay__date" id="overlay-fecha"></p>
+        <div class="video-overlay__tap">
+          <span class="video-tap-ring"></span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p class="video-overlay__hint">Toca para comenzar</p>
+      </div>
+    </div>
+    <div class="video-progress-bar"><div class="video-progress-fill" id="video-progress"></div></div>
+  </div>
+
+  <!-- ============ INVITACIÓN ============ -->
+  <div class="invitation" id="invitation">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__photo" id="hero-photo"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__label">Nos casamos</p>
+        <h1 class="hero__names">
+          <span id="hero-nombreA"></span>
+          <span class="hero__amp">&amp;</span>
+          <span id="hero-nombreB"></span>
+        </h1>
+        <p class="hero__apellidos" id="hero-apellidos"></p>
+        <p class="hero__date" id="hero-fecha"></p>
+      </div>
+      <div class="hero__scroll"><span></span></div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section-countdown">
+      <span class="label" style="text-align:center;display:block">Cuenta regresiva</span>
+      <div class="countdown" id="countdown"></div>
+    </section>
+
+    <!-- MENSAJES -->
+    <section class="section-mensajes" id="section-mensajes">
+      <div class="container" id="mensajes-contenido"></div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="section-story" id="section-historia">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:1rem">
+          <span class="label">Nuestra historia</span>
+          <h2 class="split-title">Una promesa de amor</h2>
+        </div>
+      </div>
+      <div id="historia-contenido"></div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section-timeline" id="section-timeline">
+      <div class="container" style="text-align:center">
+        <span class="label">Itinerario</span>
+        <h2 class="split-title">El gran día</h2>
+      </div>
+      <div class="timeline-wrap" id="timeline-contenido"></div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="section-map">
+      <div class="container" style="text-align:center">
+        <span class="label">Ubicación</span>
+        <h2 class="split-title" id="ubicacion-nombre"></h2>
+        <p class="subtitle" id="ubicacion-direccion"></p>
+      </div>
+      <div class="map-wrap">
+        <div class="map-frame">
+          <div class="map-pin-wrap">
+            <div class="map-pin"><span class="map-pin__pulse"></span><span class="map-pin__dot"></span></div>
+            <span class="map-pin__label" id="map-label"></span>
+          </div>
+        </div>
+        <div class="map-btns">
+          <a id="ubicacion-link" href="#" target="_blank" class="btn btn-rose">Cómo llegar</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section-story" id="section-galeria" style="background:var(--cream)">
+      <div class="container" style="text-align:center">
+        <span class="label">Comparte tus fotos</span>
+        <h2 class="split-title">Galería</h2>
+        <p class="subtitle">Sube tus mejores momentos de la celebración</p>
+        <input type="file" id="input-foto" accept="image/*" hidden>
+        <button id="btn-subir-foto" class="btn btn-outline btn-large">Subir foto</button>
+        <div class="gallery-grid" id="galeria-grid"></div>
+      </div>
+    </section>
+
+    <!-- LIBRO DE FIRMAS -->
+    <section class="section-book" id="section-firmas">
+      <div class="container" style="text-align:center">
+        <span class="label">Libro de firmas</span>
+        <h2 class="split-title" style="color:var(--white)">Déjanos un mensaje</h2>
+      </div>
+      <div class="book-container">
+        <div class="book">
+          <div class="book-spine"><p>Libro <span>·</span> de firmas</p></div>
+          <div class="book-page--left">
+            <div class="book-page__inner">
+              <div class="book-page__header">
+                <div class="book-page__lines"></div>
+                <p class="book-page__title">Escribe aquí</p>
+                <p class="book-page__sub">Tu firma quedará guardada para siempre</p>
+              </div>
+              <form id="form-firma" style="display:flex;flex-direction:column;gap:.75rem;flex:1">
+                <input type="text" id="firma-nombre" placeholder="Tu nombre" required style="padding:.75rem;border:1.5px solid var(--blush);border-radius:12px;font-family:var(--font-d);font-size:1rem">
+                <div class="book-field" style="flex:1">
+                  <textarea id="firma-mensaje" placeholder="Tu mensaje para los novios..." required></textarea>
+                </div>
+                <button type="submit" class="book-submit">Firmar</button>
+              </form>
+            </div>
+          </div>
+          <div class="book-page--right">
+            <div class="book-page__inner">
+              <div class="book-entries" id="firmas-lista">
+                <p class="book-entries__empty">Sé el primero en firmar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section-countdown" id="section-rsvp" style="text-align:center">
+      <div class="container">
+        <span class="label">Confirmación</span>
+        <h2 class="split-title" style="color:var(--white)">Te esperamos</h2>
+        <p class="rsvp-desc">Por favor confirma tu asistencia antes del 15 de septiembre de 2026.</p>
+        <div class="map-btns">
+          <a id="rsvp-novio" href="#" target="_blank" class="btn btn-white">Confirmar con Bryan</a>
+          <a id="rsvp-novia" href="#" target="_blank" class="btn btn-white">Confirmar con Stefany</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__photo" id="footer-photo"></div>
+      <div class="footer__overlay"></div>
+      <div class="footer__content">
+        <p class="footer__names" id="footer-iniciales"></p>
+        <p class="footer__date" id="footer-fecha"></p>
+        <p class="footer__phrase">Con amor, los esperamos.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
