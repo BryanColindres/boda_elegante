@@ -30,26 +30,28 @@
   <!-- ============ INVITACIÓN ============ -->
   <div class="invitation" id="invitation">
 
-    <!-- HERO -->
+    <!-- HERO SPLIT -->
     <section class="hero" id="hero">
-      <div class="hero__photo" id="hero-photo"></div>
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <p class="hero__label">Nos casamos</p>
-        <h1 class="hero__names">
-          <span id="hero-nombreA"></span>
-          <span class="hero__amp">&amp;</span>
-          <span id="hero-nombreB"></span>
-        </h1>
-        <p class="hero__apellidos" id="hero-apellidos"></p>
-        <p class="hero__date" id="hero-fecha"></p>
+      <div class="hero__photo-col" id="hero-photo"></div>
+      <div class="hero__text-col">
+        <div class="hero__frame marco">
+          <span class="esq-bl"></span><span class="esq-br"></span>
+          <p class="hero__label">Nos casamos</p>
+          <h1 class="hero__names">
+            <span id="hero-nombreA"></span>
+            <span class="hero__amp">&amp;</span>
+            <span id="hero-nombreB"></span>
+          </h1>
+          <p class="hero__apellidos" id="hero-apellidos"></p>
+          <p class="hero__date" id="hero-fecha"></p>
+        </div>
       </div>
       <div class="hero__scroll"><span></span></div>
     </section>
 
     <!-- COUNTDOWN -->
     <section class="section-countdown">
-      <span class="label" style="text-align:center;display:block">Cuenta regresiva</span>
+      <span class="label">Cuenta regresiva</span>
       <div class="countdown" id="countdown"></div>
     </section>
 
@@ -60,22 +62,22 @@
 
     <!-- HISTORIA -->
     <section class="section-story" id="section-historia">
-      <div class="container">
-        <div style="text-align:center;margin-bottom:1rem">
-          <span class="label">Nuestra historia</span>
-          <h2 class="split-title">Una promesa de amor</h2>
-        </div>
+      <div class="container" style="text-align:center;margin-bottom:1rem">
+        <span class="label">Nuestra historia</span>
+        <h2 class="split-title">Una promesa de amor</h2>
+        <div class="ornamento"><span></span></div>
       </div>
       <div id="historia-contenido"></div>
     </section>
 
-    <!-- TIMELINE -->
+    <!-- TIMELINE / PROGRAMA -->
     <section class="section-timeline" id="section-timeline">
       <div class="container" style="text-align:center">
         <span class="label">Itinerario</span>
         <h2 class="split-title">El gran día</h2>
+        <div class="ornamento"><span></span></div>
       </div>
-      <div class="timeline-wrap" id="timeline-contenido"></div>
+      <div class="programa" id="timeline-contenido"></div>
     </section>
 
     <!-- UBICACIÓN -->
@@ -99,62 +101,49 @@
     </section>
 
     <!-- GALERÍA -->
-    <section class="section-story" id="section-galeria" style="background:var(--cream)">
+    <section class="section-galeria" id="section-galeria">
       <div class="container" style="text-align:center">
         <span class="label">Comparte tus fotos</span>
         <h2 class="split-title">Galería</h2>
         <p class="subtitle">Sube tus mejores momentos de la celebración</p>
+        <div class="ornamento"><span></span></div>
         <input type="file" id="input-foto" accept="image/*" hidden>
         <button id="btn-subir-foto" class="btn btn-outline btn-large">Subir foto</button>
-        <div class="gallery-grid" id="galeria-grid"></div>
       </div>
+      <div class="galeria-grid" id="galeria-grid"></div>
     </section>
 
     <!-- LIBRO DE FIRMAS -->
-    <section class="section-book" id="section-firmas">
+    <section class="section-firmas" id="section-firmas">
       <div class="container" style="text-align:center">
         <span class="label">Libro de firmas</span>
-        <h2 class="split-title" style="color:var(--white)">Déjanos un mensaje</h2>
+        <h2 class="split-title">Déjanos un mensaje</h2>
+        <div class="ornamento"><span></span></div>
       </div>
-      <div class="book-container">
-        <div class="book">
-          <div class="book-spine"><p>Libro <span>·</span> de firmas</p></div>
-          <div class="book-page--left">
-            <div class="book-page__inner">
-              <div class="book-page__header">
-                <div class="book-page__lines"></div>
-                <p class="book-page__title">Escribe aquí</p>
-                <p class="book-page__sub">Tu firma quedará guardada para siempre</p>
-              </div>
-              <form id="form-firma" style="display:flex;flex-direction:column;gap:.75rem;flex:1">
-                <input type="text" id="firma-nombre" placeholder="Tu nombre" required style="padding:.75rem;border:1.5px solid var(--blush);border-radius:12px;font-family:var(--font-d);font-size:1rem">
-                <div class="book-field" style="flex:1">
-                  <textarea id="firma-mensaje" placeholder="Tu mensaje para los novios..." required></textarea>
-                </div>
-                <button type="submit" class="book-submit">Firmar</button>
-              </form>
-            </div>
-          </div>
-          <div class="book-page--right">
-            <div class="book-page__inner">
-              <div class="book-entries" id="firmas-lista">
-                <p class="book-entries__empty">Sé el primero en firmar</p>
-              </div>
-            </div>
-          </div>
+      <div class="firmas-wrap">
+        <form id="form-firma" class="form-firma">
+          <input type="text" id="firma-nombre" placeholder="Tu nombre" required>
+          <textarea id="firma-mensaje" placeholder="Tu mensaje para los novios..." required></textarea>
+          <button type="submit" class="btn btn-rose" style="align-self:center;margin-top:.5rem">Firmar</button>
+        </form>
+        <div class="firmas-lista" id="firmas-lista">
+          <p class="firmas-vacio">Sé el primero en firmar</p>
         </div>
       </div>
     </section>
 
     <!-- RSVP -->
-    <section class="section-countdown" id="section-rsvp" style="text-align:center">
+    <section class="section-rsvp" id="section-rsvp">
       <div class="container">
         <span class="label">Confirmación</span>
-        <h2 class="split-title" style="color:var(--white)">Te esperamos</h2>
-        <p class="rsvp-desc">Por favor confirma tu asistencia antes del 15 de septiembre de 2026.</p>
-        <div class="map-btns">
-          <a id="rsvp-novio" href="#" target="_blank" class="btn btn-white">Confirmar con Bryan</a>
-          <a id="rsvp-novia" href="#" target="_blank" class="btn btn-white">Confirmar con Stefany</a>
+        <h2 class="split-title">Te esperamos</h2>
+        <div class="rsvp-card marco">
+          <span class="esq-bl"></span><span class="esq-br"></span>
+          <p class="rsvp-desc">Por favor confirma tu asistencia antes del 15 de septiembre de 2026.</p>
+          <div class="rsvp-btns">
+            <a id="rsvp-novio" href="#" target="_blank" class="btn btn-white">Confirmar con Bryan</a>
+            <a id="rsvp-novia" href="#" target="_blank" class="btn btn-white">Confirmar con Stefany</a>
+          </div>
         </div>
       </div>
     </section>

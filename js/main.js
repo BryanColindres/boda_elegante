@@ -68,9 +68,10 @@ function pintarMensajes(){
   const seccion = document.getElementById('section-mensajes');
   if (!C.mensajes || !C.mensajes.length) { seccion.style.display = 'none'; return; }
   document.getElementById('mensajes-contenido').innerHTML = C.mensajes.map(m => `
-    <div class="mensaje-card reveal">
+    <div class="mensaje-card reveal marco">
+      <span class="esq-bl"></span><span class="esq-br"></span>
       <p>${m.texto}</p>
-      ${m.referencia ? `<span>${m.referencia}</span>` : ''}
+      ${m.referencia ? `<span class="ref">${m.referencia}</span>` : ''}
     </div>`).join('');
 }
 
@@ -79,12 +80,12 @@ function pintarHistoria(){
   const seccion = document.getElementById('section-historia');
   const cont = document.getElementById('historia-contenido');
   if (!C.historia || !C.historia.length) { seccion.style.display = 'none'; return; }
+  const numeros = ['I','II','III','IV','V','VI','VII'];
   cont.innerHTML = C.historia.map((h, i) => `
-    <div class="story-split">
-      <div class="story-split__photo reveal-left" style="${i % 2 ? 'order:2' : ''}">
-        <img src="${h.foto}" alt="${h.titulo || ''}" onerror="this.parentElement.style.background='var(--negro)'">
-      </div>
-      <div class="story-split__text reveal-right">
+    <div class="historia-item reveal">
+      <div class="historia-item__foto"><img src="${h.foto}" alt="${h.titulo || ''}"></div>
+      <div class="historia-item__texto">
+        <span class="num">${numeros[i] || i+1}</span>
         ${h.titulo ? `<h3>${h.titulo}</h3>` : ''}
         <p>${h.texto}</p>
       </div>
@@ -96,13 +97,13 @@ function pintarTimeline(){
   const seccion = document.getElementById('section-timeline');
   const cont = document.getElementById('timeline-contenido');
   if (!C.timeline || !C.timeline.length) { seccion.style.display = 'none'; return; }
-  cont.innerHTML = C.timeline.map(t => `
-    <div class="tl-item">
-      <div class="tl-empty"></div>
-      <div class="tl-dot"><div class="tl-dot__icon">${t.icono || '◆'}</div></div>
-      <div class="tl-body">
-        <span class="tl-hora">${t.hora}</span>
-        <div class="tl-titulo">${t.titulo}</div>
+  const romanos = ['I','II','III','IV','V','VI','VII','VIII','IX'];
+  cont.innerHTML = C.timeline.map((t, i) => `
+    <div class="prog-item reveal">
+      <span class="prog-num">${romanos[i] || i+1}</span>
+      <div class="prog-cont">
+        <span class="prog-titulo">${t.titulo}</span>
+        <span class="prog-hora">${t.hora}</span>
       </div>
     </div>`).join('');
 }
@@ -188,9 +189,9 @@ async function cargarFirmas(){
     const lista = document.getElementById('firmas-lista');
     if (!data.records || !data.records.length) return;
     lista.innerHTML = data.records.map(r => `
-      <div class="book-entry">
-        <div class="book-entry__name">${r.fields.Nombre || ''}</div>
-        <div class="book-entry__msg">${r.fields.Mensaje || ''}</div>
+      <div class="firma-item">
+        <div class="nombre">${r.fields.Nombre || ''}</div>
+        <div class="mensaje">${r.fields.Mensaje || ''}</div>
       </div>`).join('');
   } catch (err) { console.error(err); }
 }
